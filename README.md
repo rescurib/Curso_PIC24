@@ -1,2 +1,2 @@
-# Curso de proramación de microcontroladores de la familia PIC24
+# Curso de programación de microcontroladores de la familia PIC24
 
