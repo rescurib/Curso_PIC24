@@ -1,5 +1,6 @@
 # Lección 1: Reloj de sistema y puertos I/O
 
+## Configuración de oscilador principal
 Esta serie de microcontroladores trabajan a 3.3v lo que los hace más susceptibles al ruido si no se hace un buen conexionado. Es estrictamente necesario colocar capacitores de 0.1 uF entre cada par de pines Vdd-Vss como se muestra en la Figura 2-1 de la datasheet (yo estaré usando en este ejemplo un [PIC24FJ32GA002](http://ww1.microchip.com/downloads/en/DeviceDoc/39881e.pdf)):
 <p align="center">
 <img src="https://1.bp.blogspot.com/-U7qTi1OyQnA/Xscfy6lwBDI/AAAAAAAACQ8/b1U6awHRlzc-yVnJ9_K-zqCTBJmxDiZLwCLcBGAsYHQ/s1600/PIC24_Circuit.png" alt="alt text">
@@ -21,4 +22,6 @@ Si no se colocan estos capacitores el PIC tendrá un comportamiento errático de
 <img src="https://1.bp.blogspot.com/-IgKQzTWcTx8/XscnggvYR2I/AAAAAAAACRU/Ewt5Bepko4okUATNAumV7PU5olFs0g6gwCLcBGAsYHQ/s320/compiler_help_MPLABX.png" alt="alt text">
 </p>
 
-Abrirá un archivo HTML donde debemos buscar Configuration Settings Reference. De ahí podrán copiar los pragmas requeridos. Ahora solo falta un ajuste más pero se hará escribiendo en un registro. Lo que falta es asegurarnos que FOSC tenga un frecuencia de 32 MHz. Para esto debemos revisar el registro CLKDIV (pág. 99) dónde podremos ver que el valor de división del último postcaler es de 0. Ahora tenemos toda la información necesaria para escribir nuestro programa:
+Abrirá un archivo HTML donde debemos buscar Configuration Settings Reference. De ahí podrán copiar los pragmas requeridos. Ahora solo falta un ajuste más pero se hará escribiendo en un registro. Lo que falta es asegurarnos que FOSC tenga un frecuencia de 32 MHz. Para esto debemos revisar el registro CLKDIV (pág. 99) dónde podremos ver que el valor de división del último postcaler es de 0. Ahora tenemos toda la información necesaria para continiar con nuestro primer programa.
+
+## Configuración de pines de entrada o salida
