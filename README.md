@@ -1,1 +1,2 @@
-# Curso_PIC24
+# Curso de proramación de microcontroladores de la familia PIC24
+
