@@ -1,5 +1,5 @@
 # Curso de programación de microcontroladores de la familia PIC24
-Se usará el dispositivo PIC24FJ32GA002 programando con el IDE MPLABX con el compilador XC16. Se asumirá que se tienen conocimientos elementales de programación en C (si no, recomiendo mucho [este curso](https://www.youtube.com/playlist?list=PLn9-gi1mj5U7BjN4O-6QkbdtUpXcrF24_) en Youtube). En cada lección se realizarán uno o mas programas. Los proyectos integran los conociemientos adquiridos en las lecciones previas. 
+Se usará el dispositivo PIC24FJ32GA002 programando con el IDE [MPLABX](https://www.microchip.com/mplab/mplab-x-ide) con el compilador [XC16](https://www.microchip.com/mplab/compilers). Se asumirá que se tienen conocimientos elementales de programación en C (si no, recomiendo mucho [este curso](https://www.youtube.com/playlist?list=PLn9-gi1mj5U7BjN4O-6QkbdtUpXcrF24_) en Youtube). En cada lección se realizarán uno o mas programas. Los proyectos integran los conociemientos adquiridos en las lecciones previas. 
 ## Contenido
 * **Lección 1**: Reloj de sistema y puertos I/O
 * **Lección 2**: Interrupciones externas
