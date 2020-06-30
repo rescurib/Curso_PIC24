@@ -44,3 +44,10 @@ Todos los pines de puerto tienen 3 registros aosciados a su operación entrada/s
 El voltaje de operación de los PIC24FJ es de 3.3V pero algunos pines son tolerantes a entrada de 5V (ver Tabla 10-1, pag. 106). Para tener salidas de 5V hay un 4to registro llamado *Open-Dran Control* (ODCX) donde se debe asiganar '1' para habilitar (si la opcion está disponible para ese pin) y colocar un [resistor pull-up](https://i.stack.imgur.com/W1Iwa.png) a 5V. 
 
 ## Ejemplo 1.1 Verificar frecuecuencia de oscilador con un LED
+
+En este primer ejemplo (Ejemplo1_1_Prueba_OSC.c) verificaremos que el oscilador tenga la frecuencia correcta (32 MHz en este caso). El circuito que vamos a utilizar es el siguiente:
+
+<p align="center">
+<img src="https://1.bp.blogspot.com/-va-Bzj47O3Q/XvuwN4fHEjI/AAAAAAAACVM/KjHdEgLidJ0zAeqlvjjYB7uOq9bMsm2kQCLcBGAsYHQ/s1600/P1_1.png" alt="alt text">
+</p>
+
