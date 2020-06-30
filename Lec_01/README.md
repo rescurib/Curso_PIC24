@@ -35,3 +35,12 @@ Abrirá un archivo HTML donde debemos buscar Configuration Settings Reference. D
 Ahora tenemos toda la información necesaria para continuar con nuestro primer programa.
 
 ## Configuración de pines de entrada o salida
+Todos los pines de puerto tienen 3 registros aosciados a su operación entrada/salida. El registro de dirección de datos TRISX determina si un pin es de entrada (1) o salida (0). Todos los puertos estan definidos como entrada despues de un reset. Para lectura/escritura están LATX y PORTX. Aunque es posible leer y escribir en cualquiera de ellos, como regla general *se escribe en LATX y se lee en PORTX*. El diagrama interneno de cada pin es el siguiente (FIG 10-1, pag. 105):
+
+<p align="center">
+<img src="https://1.bp.blogspot.com/-vU4O3I5XNcY/XvupzA4DB-I/AAAAAAAACVA/T33Rk8v4vK4zsZY1oKuB_UkKXRUy4LxnwCLcBGAsYHQ/s1600/GA002_IO.png" alt="alt text">
+</p>
+
+El voltaje de operación de los PIC24FJ es de 3.3V pero algunos pines son tolerantes a entrada de 5V (ver Tabla 10-1, pag. 106). Para tener salidas de 5V hay un 4to registro llamado *Open-Dran Control* (ODCX) donde se debe asiganar '1' para habilitar (si la opcion está disponible para ese pin) y colocar un [resistor pull-up](https://i.stack.imgur.com/W1Iwa.png) a 5V. 
+
+## Ejemplo 1.1 Verificar frecuecuencia de oscilador con un LED
