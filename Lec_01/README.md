@@ -22,7 +22,7 @@ Si no se colocan estos capacitores el PIC tendrá un comportamiento errático de
 <img src="https://1.bp.blogspot.com/-IgKQzTWcTx8/XscnggvYR2I/AAAAAAAACRU/Ewt5Bepko4okUATNAumV7PU5olFs0g6gwCLcBGAsYHQ/s320/compiler_help_MPLABX.png" alt="alt text">
 </p>
 
-Abrirá un archivo HTML donde debemos buscar Configuration Settings Reference. De ahí podrán copiar los pragmas requeridos. Ahora solo falta un ajuste más pero se hará escribiendo en un registro. Lo que falta es asegurarnos que FOSC tenga un frecuencia de 32 MHz. Para esto debemos revisar el registro CLKDIV (pág. 99) dónde podremos ver que el valor de división del último postcaler es de 0. En el [poster de infromación](http://ww1.microchip.com/downloads/en/DeviceDoc/50002010B.pdf) del programador PICkit 3 menciona que el JTAG debe estar desactivado. Las opciones de configuración minimas necesarias son:
+Abrirá un archivo HTML donde debemos buscar Configuration Settings Reference. De ahí podrán copiar los pragmas requeridos. Ahora solo falta un ajuste más pero se hará escribiendo en un registro. Lo que falta es asegurarnos que FOSC tenga un frecuencia de 32 MHz. Para esto debemos revisar el registro CLKDIV (pág. 99) dónde podremos ver que el valor de división del último postcaler es de 0. En el [poster de infromación](http://ww1.microchip.com/downloads/en/DeviceDoc/50002010B.pdf) del programador PICkit 3 menciona que el JTAG debe estar desactivado. tambien es posible generar automaticamente los bits de configuración como se muestra en [este video](https://www.youtube.com/watch?v=bFaUxLTh9kk). Las opciones de configuración minimas necesarias son:
 
 ```C
 //--- Bits de configuración ---
