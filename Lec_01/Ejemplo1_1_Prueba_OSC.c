@@ -5,7 +5,7 @@
  * Created on 23 de enero de 2020, 10:16 PM
  */
 
-//--- Bits de configuración ---
+//--- Bits de configuraciÃ³n ---
 #pragma config POSCMOD = XT       // Primary Oscillator Select (XT Oscillator mode selected)
 #pragma config FNOSC = PRIPLL     // Oscillator Select (Primary Oscillator with PLL module (HSPLL, ECPLL))
 #pragma config FWDTEN = OFF       // Watchdog Timer Enable (Watchdog Timer is disabled)
