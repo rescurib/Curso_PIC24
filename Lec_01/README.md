@@ -3,7 +3,7 @@
 ## Configuración de oscilador principal
 Esta serie de microcontroladores trabajan a 3.3v lo que los hace más susceptibles al ruido si no se hace un buen conexionado. Es estrictamente necesario colocar capacitores de 0.1 uF entre cada par de pines Vdd-Vss como se muestra en la Figura 2-1 de la datasheet (yo estaré usando en este ejemplo un [PIC24FJ32GA002](http://ww1.microchip.com/downloads/en/DeviceDoc/39881e.pdf)):
 <p align="center">
-<img src="https://1.bp.blogspot.com/-U7qTi1OyQnA/Xscfy6lwBDI/AAAAAAAACQ8/b1U6awHRlzc-yVnJ9_K-zqCTBJmxDiZLwCLcBGAsYHQ/s1600/PIC24_Circuit.png" alt="alt text">
+<img src="https://1.bp.blogspot.com/-U7qTi1OyQnA/Xscfy6lwBDI/AAAAAAAACQ8/b1U6awHRlzc-yVnJ9_K-zqCTBJmxDiZLwCLcBGAsYHQ/s1600/PIC24_Circuit.png" alt="alt text" width="550">
 </p>
 
 Si no se colocan estos capacitores el PIC tendrá un comportamiento errático debido al ruido. Usaré en este ejemplo un cristal de 8MHz con capacitores de 22pF. Una vez conectado el circuito podemos avanzar a la configuración del oscilador. Configuraremos el oscilador externo con PLL activado con la frecuencia de reloj FOSC máxima de 32 MHz (recordemos que FCY = FOSC/2). He marcado el camino que nos interesa sobre el diagrama de la Figura 8-1 de la página 95:
@@ -48,6 +48,9 @@ El voltaje de operación de los PIC24FJ es de 3.3V pero algunos pines son tolera
 En este primer ejemplo (Ejemplo1_1_Prueba_OSC.c) verificaremos que el oscilador tenga la frecuencia correcta (32 MHz en este caso). El circuito que vamos a utilizar es el siguiente:
 
 <p align="center">
-<img src="https://1.bp.blogspot.com/-va-Bzj47O3Q/XvuwN4fHEjI/AAAAAAAACVM/KjHdEgLidJ0zAeqlvjjYB7uOq9bMsm2kQCLcBGAsYHQ/s1600/P1_1.png" alt="alt text">
+<img src="https://1.bp.blogspot.com/-va-Bzj47O3Q/XvuwN4fHEjI/AAAAAAAACVM/KjHdEgLidJ0zAeqlvjjYB7uOq9bMsm2kQCLcBGAsYHQ/s1600/P1_1.png" alt="alt text" width="800">
 </p>
 
+Haremos que el LED se mantenga encendido 500 ms y apagado otros 500 ms. Para esto usaremos la función __delay_ms() que debemos tomar de <libpic30.h>.
+
+## Ejemplo 1.2 Switch para toggle de un LED
