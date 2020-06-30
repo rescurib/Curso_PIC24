@@ -53,8 +53,14 @@ En este primer ejemplo (Ejemplo1_1_Prueba_OSC.c) verificaremos que el oscilador 
 
 Haremos que el LED se mantenga encendido 500 ms y apagado otros 500 ms. Para esto usaremos la función __delay_ms() que debemos tomar de <libpic30.h>.
 
-## Ejemplo 1.2 Switch para toggle de un LED
-En este ejemplo (Ejemplo_Toggle.c) vamos a usar un botón para encender o apagar un led cada vez que se presione. 
+## Ejemplo 1.2 Lectura sin rebote de un botón para toggle de un LED
+En este ejemplo (Ejemplo_Toggle.c) vamos a usar un push-button para encender o apagar un led cada vez que se presione. El circuito utilizado es el siguiente:
 <p align="center">
-<img src="https://1.bp.blogspot.com/-1H0lXdq-Cc4/XvuznpsYn9I/AAAAAAAACVY/F6J3fpTvQqkSI4xBlrBj-x_roxuhcPlEgCLcBGAsYHQ/s1600/P1_2.png" alt="alt text" width="850">
+<img src="https://4.bp.blogspot.com/-d7IW2s7ghkc/XvvIPM05AqI/AAAAAAAACVk/xP_-JU2PfiEDW7UUdsMLL278fVPauTN5gCLcBGAsYHQ/s1600/P1_2.png" alt="alt text" width="850">
+</p>
+
+Debido a la estructura mecánica del push-button, se producen vibraciones a la hora de presionarlo que provocan una intermitencia en la lectura del estado del botón. Para corregir este problema debemos tomar como lectura confiable el estado del pin de entrada en la zona que se encuentra justo en medio de los transientes por rebotes como se muestra en la siguiente imágen:
+
+<p align="center">
+<img src="https://1.bp.blogspot.com/---d0VgkwU6w/V7E9hSjEkdI/AAAAAAAABn8/jvqZJxAkAsIlOFOKC-GfnV7U8wRevz0iwCLcB/s400/switch_antirebote.png" alt="alt text">
 </p>
