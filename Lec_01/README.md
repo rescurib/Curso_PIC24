@@ -16,12 +16,22 @@ Si no se colocan estos capacitores el PIC tendrá un comportamiento errático de
 
 
  Si estamos usando un cristal de 8 MHz ¿Qué modo es el adecuado? Eso lo ponemos encontrar en el [“PIC24F Family Reference Manual”,
-“Oscillator” (DS39700)](http://ww1.microchip.com/downloads/en/devicedoc/39700c.pdf), tabla 6-2 de la pag. 13, el cual dice que es XT. EN el caso del GA002 si queremos usar el PLL el modo sería XTPLL. Ahora sólo necesitamos saber que bits de configuración necesitamos modificar. En la tabla 8-1 de la página 96 (del datasheet) podemos ver que son POSCMD y FNOSC. Para encontrar los macros necesarios podemos ir a Compiler Help en el dashboard de MPLAB X:
+“Oscillator” (DS39700)](http://ww1.microchip.com/downloads/en/devicedoc/39700c.pdf), tabla 6-2 de la pag. 13, el cual dice que es XT. EN el caso del GA002 si queremos usar el PLL deberemos poner la configuración FNOSC = PRIPLL. Ahora sólo necesitamos saber que bits de configuración necesitamos modificar. En la tabla 8-1 de la página 96 (del datasheet) podemos ver que son POSCMD y FNOSC. Para encontrar los macros necesarios podemos ir a Compiler Help en el dashboard de MPLAB X:
 
 <p align="center">
 <img src="https://1.bp.blogspot.com/-IgKQzTWcTx8/XscnggvYR2I/AAAAAAAACRU/Ewt5Bepko4okUATNAumV7PU5olFs0g6gwCLcBGAsYHQ/s320/compiler_help_MPLABX.png" alt="alt text">
 </p>
 
-Abrirá un archivo HTML donde debemos buscar Configuration Settings Reference. De ahí podrán copiar los pragmas requeridos. Ahora solo falta un ajuste más pero se hará escribiendo en un registro. Lo que falta es asegurarnos que FOSC tenga un frecuencia de 32 MHz. Para esto debemos revisar el registro CLKDIV (pág. 99) dónde podremos ver que el valor de división del último postcaler es de 0. Ahora tenemos toda la información necesaria para continiar con nuestro primer programa.
+Abrirá un archivo HTML donde debemos buscar Configuration Settings Reference. De ahí podrán copiar los pragmas requeridos. Ahora solo falta un ajuste más pero se hará escribiendo en un registro. Lo que falta es asegurarnos que FOSC tenga un frecuencia de 32 MHz. Para esto debemos revisar el registro CLKDIV (pág. 99) dónde podremos ver que el valor de división del último postcaler es de 0. En el [poster de infromación](http://ww1.microchip.com/downloads/en/DeviceDoc/50002010B.pdf) del programador PICkit 3 menciona que el JTAG debe estar desactivado. Las opciones de configuración minimas necesarias son:
+
+```C
+//--- Bits de configuración ---
+#pragma config POSCMOD = XT             // Primary Oscillator Select (XT Oscillator mode selected)
+#pragma config FNOSC = PRIPLL           // Oscillator Select (Primary Oscillator with PLL module (HSPLL, ECPLL))
+#pragma config FWDTEN = OFF             // Watchdog Timer Enable (Watchdog Timer is disabled)
+#pragma config JTAGEN = OFF             // JTAG Port Enable (JTAG port is disabled)
+//-----------------------------
+```
+Ahora tenemos toda la información necesaria para continuar con nuestro primer programa.
 
 ## Configuración de pines de entrada o salida
