@@ -54,7 +54,7 @@ En este primer ejemplo (Ejemplo1_1_Prueba_OSC.c) verificaremos que el oscilador 
 Haremos que el LED se mantenga encendido 500 ms y apagado otros 500 ms. Para esto usaremos la función __delay_ms() que debemos tomar de <libpic30.h>.
 
 ## Ejemplo 1.2 Lectura sin rebote de un botón para toggle de un LED
-En este ejemplo (Ejemplo_Toggle.c) vamos a usar un push-button para invertir el estado de un led cada vez que se presione. El circuito utilizado es el siguiente:
+En este ejemplo (Ejemplo1_2_Toggle.c) vamos a usar un push-button para invertir el estado de un led cada vez que se presione. El circuito utilizado es el siguiente:
 <p align="center">
 <img src="https://4.bp.blogspot.com/-d7IW2s7ghkc/XvvIPM05AqI/AAAAAAAACVk/xP_-JU2PfiEDW7UUdsMLL278fVPauTN5gCLcBGAsYHQ/s1600/P1_2.png" alt="alt text" width="850">
 </p>
