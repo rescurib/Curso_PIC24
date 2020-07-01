@@ -54,13 +54,46 @@ En este primer ejemplo (Ejemplo1_1_Prueba_OSC.c) verificaremos que el oscilador 
 Haremos que el LED se mantenga encendido 500 ms y apagado otros 500 ms. Para esto usaremos la función __delay_ms() que debemos tomar de <libpic30.h>.
 
 ## Ejemplo 1.2 Lectura sin rebote de un botón para toggle de un LED
-En este ejemplo (Ejemplo_Toggle.c) vamos a usar un push-button para encender o apagar un led cada vez que se presione. El circuito utilizado es el siguiente:
+En este ejemplo (Ejemplo_Toggle.c) vamos a usar un push-button para invertir el estado de un led cada vez que se presione. El circuito utilizado es el siguiente:
 <p align="center">
 <img src="https://4.bp.blogspot.com/-d7IW2s7ghkc/XvvIPM05AqI/AAAAAAAACVk/xP_-JU2PfiEDW7UUdsMLL278fVPauTN5gCLcBGAsYHQ/s1600/P1_2.png" alt="alt text" width="850">
 </p>
 
-Debido a la estructura mecánica del push-button, se producen vibraciones a la hora de presionarlo que provocan una intermitencia en la lectura del estado del botón. Para corregir este problema debemos tomar como lectura confiable el estado del pin de entrada en la zona que se encuentra justo en medio de los transientes por rebotes como se muestra en la siguiente imágen:
+Parece un problema sencillo pero hay varios problemas que resolver. Primero hay que eliminar el fenómeno de rebote en el botón. Debido a la estructura mecánica del push-button, se producen vibraciones a la hora de presionarlo que provocan una intermitencia en la lectura del estado del botón. Para corregir este problema debemos tomar como lectura confiable el estado del pin de entrada en la zona que se encuentra justo en medio de los transientes por rebotes como se muestra en la siguiente imágen:
 
 <p align="center">
 <img src="https://1.bp.blogspot.com/---d0VgkwU6w/V7E9hSjEkdI/AAAAAAAABn8/jvqZJxAkAsIlOFOKC-GfnV7U8wRevz0iwCLcB/s400/switch_antirebote.png" alt="alt text">
 </p>
+
+Esto se reseulve vía software con la siguiente función de lectura del botón:
+```C
+char boton(){
+    char estado = 0;
+    if(PORTBbits.RB7 == 1){
+        __delay_ms(5);
+        if(PORTBbits.RB7 == 1)
+            estado = 1;
+    }
+    return estado;
+}
+```
+La variable de retorno es un *char* para ahorrar memoria durante su ejecución. Para invertir el estado del LED (operación toggle) podemos usar el siguiente macro:
+
+```C
+#define LED_Toggle()  (LATBbits.LATB10 ^= 1) // A^B = A XOR B
+```
+
+Ahora tenemos un último problema por resolver. No podemos simplemente *togglear* cuando el botón este presionado porque cambiaría el estado del led una y otra vez mientras el botón esté presionado. Lo que podemos hacer es solo *togglear* durante la transición de un apagado a encendido (flanco de subida) de la siguiente manera:
+
+```C
+char edo_viejo=0,edo_nuevo=0;
+    
+    while(1){
+        edo_nuevo = boton();
+        
+        if(edo_nuevo==1 && edo_viejo==0)
+            LED_Toggle();
+        
+        edo_viejo = edo_nuevo;
+    }
+```
