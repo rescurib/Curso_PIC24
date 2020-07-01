@@ -3,7 +3,7 @@ Se usará el dispositivo PIC24FJ32GA002 programando con el IDE [MPLABX](https://
 ## Contenido
 * **Lección 1**: Reloj de sistema y puertos I/O
 * **Lección 2**: Interrupciones externas
-* **Lección 3**: Interrupciones por timmer
+* **Lección 3**: Interrupciones por temporizador
 * **Lección 4**: Cadenas y pantalla LCD
 * **Proyecto #1**: Tacómetro y sensor de posición para un motor DC
 * **Lección 5**: Módulo de conversión analógico-digital
