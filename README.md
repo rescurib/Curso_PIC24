@@ -7,8 +7,8 @@ Se usará el dispositivo PIC24FJ32GA002 con el IDE [MPLABX](https://www.microchi
 * **Lección 4**: Cadenas y pantalla LCD
 * **Proyecto #1**: Tacómetro y sensor de posición para un motor DC
 * **Lección 5**: Módulo de conversión analógico-digital
-* **Lección 6**: Puerto serial
-* **Lección 7**: Módulo SPI
+* **Lección 6**: Módulo SPI 
+* **Lección 7**: Puerto serial
 * **Proyecto #2**: Osciloscopio y generador de funciones
 * **Lección 8**: Modulación de ancho de pulso y control de motores
 * **Lección 9**: Máquinas de estado por software
