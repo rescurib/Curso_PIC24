@@ -23,10 +23,8 @@
 int sentido = 1; // Variable global de sentido
 
 void __attribute__((interrupt(auto_psv))) _INT1Interrupt(void){
-    if (IFS1bits.INT1IF && IEC1bits.INT1IE){
-        sentido ^= 1;
-        IFS1bits.INT1IF = 0;
-    }
+    sentido ^= 1;
+    IFS1bits.INT1IF = 0;
 }
 
 int main(void) {
