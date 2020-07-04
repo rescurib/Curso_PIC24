@@ -1,6 +1,12 @@
 # Lección 2: Interrupciones externas
 ## Concepto de interrupción 
-Dada una secuencia prinpcipal de instrucciones (programa principal), una interupción es un salto hacia una secuecia especial que ocurre si un evento particualar ocurre. Este evento está definido por el tipo de interrupción. En esta lección trataremos el tipo más sencillo el cual se trata de un cambio de estado en alguno de los pines provocado por un cambio externo. 
+Dada una secuencia prinpcipal de instrucciones (programa principal), una interupción es un salto hacia una secuecia especial (rutina o servicio de interrupción) a condición de que un evento particualar ocurra, para despues volver a la secuencia original del programa principal. 
+
+<p align="center">
+<img src="https://3.bp.blogspot.com/-pmfu-BEH9UM/Xv_zFRwELII/AAAAAAAACWA/hX-B3kd2OOs-gT38Qyy8jOMnPwhvMK2YwCLcBGAsYHQ/s1600/rutina_interrupcion_PIC.png" alt="alt text" width="850">
+</p>
+
+El evento que provoca el salto define el tipo de interrupción. En esta lección trataremos el tipo más sencillo el cual se trata de un cambio de estado externo en alguno de los pines de entrada. 
 
 ## Ejemplo 2.1 Cambio de dirección de una secuencia de LEDs
 Tenemos un serie de 8 leds con una secuencia de encedido de 1 segundo por led y debemos cambiar el sentido de la secuencia con un push-button como se muetra en el siguiente circuito:
