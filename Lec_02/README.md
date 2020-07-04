@@ -52,10 +52,8 @@ Hay que ir a la sección *Interrupt Vector Tables Reference* y buscar el disposi
 
 ```C
 void __attribute__((interrupt(auto_psv))) _INT1Interrupt(void){
-    if (IFS1bits.INT1IF && IEC1bits.INT1IE){
-        sentido ^= 1;
-        IFS1bits.INT1IF = 0;
-    }
+    sentido ^= 1;
+    IFS1bits.INT1IF = 0;
 }
 ```
 El campo INT1IF del registro IFS1 (pag. 68) es la bandera que se levanta cuando la interrupción externa INT1 se activa. Ahora solo queda configurar el pin y habilitar la interrupción. Si se observa el diagrmama de pines del PIC24FJGA002 se notará que sólo aparece indicado  el pin de interrupcion INT0. ¿Dónde están los otros dos? La respuesta está en los *Periferial Pin Select*. Los PIC24 tienen la flexibilidad de colocar pines escenciales como los Rx/Tx del puerto serial o las interrupciones externas en cualquiera de los pines marcados con RPX. En este ejemplo colocaremos la INT1 en el pin RP14/RB14 como se muestra en el circuito. El mapeo se realiza de la siguiente manera:
