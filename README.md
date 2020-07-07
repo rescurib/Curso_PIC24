@@ -16,3 +16,4 @@ Se usará el dispositivo PIC24FJ32GA002 con el IDE [MPLABX](https://www.microchi
 * **Apéndice**: Sensor ultrasónico
 * **Proyecto #3**: Robot evasor de obstáculos 
 
+Para integrar microcontroladores a aplicaciones reales al terminar este curso, recomiendo aprender a diseñar tarjetas de circuitos impresos (PCB's). [Kicad](https://kicad-pcb.org/) es un software libre, gratuito y multi-plataforma de diseño de PCB's. Pueden encontrar un tutorial [aquí](https://www.youtube.com/watch?v=lU2Gf3N5FKU&list=PLZSon0M-jxwpjtdCv7tn4ctO5AwBz124T&index=2&t=1s). Si no eres ingeniero en electrónica de formación, he hecho una guía bibliográfica de autoestudio que puedes bajar [acá](https://www.dropbox.com/s/0uosd3a8i9akrq0/Guia_Ing_Electronica.pdf?dl=0) que contiene lo mímino que hay que saber. 
