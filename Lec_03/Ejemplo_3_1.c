@@ -1,11 +1,8 @@
 //--- Bits de configuración ---
-#pragma config POSCMOD = XT    // Oscilador primario en modo XT
-#pragma config FNOSC = PRIPLL  // Oscilador primaro con PLL
-#pragma config PLL96MHZ = ON   // PLL activado
-#pragma config PLLDIV = DIV2   // Entrada de 8MHz
-
-#pragma config FWDTEN = OFF    // Timmer de Watchdog desactivado
-#pragma config JTAGEN = OFF    // Puerto JTAG desactivado 
+#pragma config POSCMOD = XT             // Primary Oscillator Select (XT Oscillator mode selected)
+#pragma config FNOSC = PRIPLL           // Oscillator Select (Primary Oscillator with PLL module (HSPLL, ECPLL))
+#pragma config FWDTEN = OFF             // Watchdog Timer Enable (Watchdog Timer is disabled)
+#pragma config JTAGEN = OFF             // JTAG Port Enable (JTAG port is disabled)
 //-----------------------------
 
 #include "xc.h"
@@ -24,7 +21,7 @@ int main(void) {
     T1CON = 0x00;          // Detiene temporizador
     T1CONbits.TCS = 0;     // Entrada por reloj interno (FCY) (pag. 150)
     TMR1 = 0x00;           //Limpia el regitro de temporizador
-    PR1 = 333;             //Carga el periodo 0xFFFF (o el valor que se requiera)
+    PR1 = 333;             //Carga el periodo 20 us (48 kHz)
     IPC0bits.T1IP = 0x01;  //Prioridad de interrupción
     IFS0bits.T1IF = 0;     //Limpia bandera de periodo
     IEC0bits.T1IE = 1;     //Habilita la interrupción por TMR1
