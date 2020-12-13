@@ -19,7 +19,7 @@ En ambos casos, el conteo es almacenado en el registro TMRx (la *x* hace referen
 
 ## Interrupción por TxIF
 
-En la seccción anterior se explico lo que es una interrupción y se dio un ejemplo de interrupción activada por un cambio de estado en uno de los pines. Es posible establecer una interrupción cuyo evento de activación sea el levantamiento de la bandera TxIF. Este es uno de los tipos de interrupción más utilizados ya que permite tener control determinista de la ejecución de una tarea, como lo es una rutina de un controlador digital o un administrador de tareas concurrentes. La sección 11.0 de la hoja de datos muestra todos los detalles de la operación del módulo TMR1.
+En la leccción anterior se explicó lo que es una interrupción y se dio un ejemplo de una interrupción activada por un cambio de estado en uno de los pines. Es posible establecer una interrupción cuyo evento de activación sea el levantamiento de la bandera TxIF. Este es uno de los tipos de interrupción más utilizados ya que permite tener control determinista de la ejecución de una tarea, como lo es una rutina de un controlador digital o un administrador de tareas concurrentes. La sección 11.0 de la hoja de datos muestra todos los detalles de la operación del módulo TMR1.
 
 Para incializar el múdulo como temporizador con interrupción habilitada:
 ```C
@@ -33,3 +33,19 @@ Para incializar el múdulo como temporizador con interrupción habilitada:
  IEC0bits.T1IE = 1;      //Habilita la interrupción por TMR1
  T1CONbits.TON = 1;      //Inicia TMR1 
 ```
+
+## Ejemplo 3.1 Generar un pulso cuadrado de 48 kHz
+Vamos a escribir una rutina de interupción que togglee el estado de un pin para ser visualizado en un osciloscio. Podemos utilizar la herrmienta de analísis analógico del simulador de Proteus. En la Lección 2 se explicó que los nombres de las rutinas de interrupución se encuetran en un listado especial en la documentación del compilador XC16. Cada nombre está asociado a un tipo particular de interrupción y el hardware que la activa. En este caso, al utilizar la interrupción por TMR1 la rutina que escribiremos será la seguiente:
+
+```C
+void __attribute__((interrupt, auto_psv)) _T1Interrupt (void){
+  _T1IF = 0;			// Limpiar bandera irq 
+  LATBbits.LATB10 ^= 1; // Toggle del LED 
+}
+````
+El circuito utilizado y los resultados de la simulación del programa en el microcotrolador son los siguientes:
+<p align="center">
+<img src="https://1.bp.blogspot.com/-rdt9ahuUFqQ/X9V9VnnwbRI/AAAAAAAACcU/OJMLMd4TB4obaJNpAsyuGONpmEue0BmTACLcBGAsYHQ/s0/Ejemplo_Interrupt_TMR_PIC24.png" alt="alt text" width="700">
+</p>
+
+
