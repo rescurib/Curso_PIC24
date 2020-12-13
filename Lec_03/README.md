@@ -39,7 +39,7 @@ Vamos a escribir una rutina de interupción que togglee el estado de un pin para
 
 ```C
 void __attribute__((interrupt, auto_psv)) _T1Interrupt (void){
-  _T1IF = 0;			// Limpiar bandera irq 
+  _T1IF = 0;            // Limpiar bandera irq 
   LATBbits.LATB10 ^= 1; // Toggle del LED 
 }
 ````
