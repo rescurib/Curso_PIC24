@@ -62,3 +62,13 @@ char* strstr(const char* s1,const char* s2)
 Para una referencia completa para la libreria *string.h* revisar [esta documentación](http://www.netcruzer.com/nz/v202/doc/html/string_8h.html).
 
 ## Pantalla LCD
+[Gilberto Pasma](https://www.youtube.com/channel/UCPPvs4M26W8A6FLp8HXDdvQ) tiene [un video](https://www.youtube.com/watch?v=pgGKlqz8hQU) excelente donde explica todos los detalles de bajo nivel sobre el funcionamiento de un display de 16x2 (sólo la primer parte es suficiente). Para el ejemplo de esta sección utilizaremos una versión modificada de la librería creada por [magkopian](https://github.com/magkopian/pic-xc8-lcd-library). Lo que me parece genial de esta librería es que permite elegir con total libertad el puerto y los pines de comunicación y control de la LCD:
+
+```C
+LCD lcd = { &PORTA, 5, 4, 0, 1, 2, 3 }; // RS->A5, EN->A4, D4->A0, D5->A1, D6->A2, D7->A3
+LCD_Init(lcd);
+```
+
+## Ejemplo 4.1 Mostrar números y texto en un LCD 16x2
+ 
+
