@@ -13,7 +13,7 @@ En la familia PIC24, el temporizador TMR1 (de 16 bits) tiene la siguiente estruc
 En ambos casos, el conteo es almacenado en el registro TMRx (la *x* hace referencia al número de módulo) y puede ser leido y sobre escrito en cualquier momento. La bandera TxIF se levanta (se pone en 1 lógico) si el valor del registro TMRx es igual al valor del registro PRx [*Period Register*] (a diferencia de la familia PIC18 en donde la bandera se levanta cuando TMRx se desborda). El comparador tambien resetea el valor de TMRx cuando se igualan los valores. La formula para obtener el valor de PR1 para levantar la bandera en el periodo deseado: 
 
 <p align="center">
-<img src="https://1.bp.blogspot.com/-dobHiZLPLwM/X9VbzU5YO-I/AAAAAAAACcI/hRcYBL5japUNQyHJxp4BCmhL4kIA1itGQCLcBGAsYHQ/s16000/PR1_TMRX_Int_PIC24.png">
+<img src="https://1.bp.blogspot.com/-rmltxHI0Y54/X9WAZkCeiJI/AAAAAAAACcg/i-JL1OcvDpsYUBiRwVRwixkfbXGFfXGvwCLcBGAsYHQ/s0/PR1_TMRX_Int_PIC24.png">
 </p>
 
 
