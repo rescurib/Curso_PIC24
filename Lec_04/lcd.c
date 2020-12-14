@@ -77,17 +77,18 @@ bool LCD_Init ( LCD display ) {
         TRISB = 0x00;
     }
     
-    #if defined(_24FJ32GA004)
+    #if defined(PORTC)
     else if ( lcd.PORT == &PORTC ) {
         TRISC = 0x00;
     }
     #endif
     
-    #if defined(_18F4550) || defined(_18F45K50)
+    #if defined(PORTD) 
     else if ( lcd.PORT == &PORTD ) {
         TRISD = 0x00;
     }
     #endif
+    
     else {
         return false;
     }
