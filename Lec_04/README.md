@@ -70,5 +70,35 @@ LCD_Init(lcd);
 ```
 
 ## Ejemplo 4.1 Mostrar números y texto en un LCD 16x2
- 
+En este programa escribiremos el LCD dos lineas que contengan letras y desplieguen dos valores numéricos en formato *double*. El LCD estara conectado al puerto A en la siguiente configuración:
+```C
+#include "lcd.h"
+....
+LCD lcd = { &PORTB, 0, 1, 2, 3, 4, 5 }; // RS->A5, EN->A4, D4->A0, D5->A1, D6->A2, D7->A3
+LCD_Init(lcd);
+```
+La función *LCD_Init()* se encarga de realizar las configuraciones de entrada/salida necesarias para cada pin por lo que no es necesario hacerlo manualmente. El código de la librería requiere de retardos por sofware por lo que será necesario cambiar el valor del macro para FCY si se usa una frecuencia diferente de 30 MHz (en otro caso se puede dejar como está).
 
+La escritura en la LCD se hace de la siguiente manera:
+```C
+const double PI = 3.141592653;
+const double E  = 2.718281828;
+char buff[11];
+    
+__delay_ms(100);
+sprintf(buff,"%.4f",PI); //.Xf -> X: cifras significativas
+LCD_Set_Cursor(0,2); // Primer renglón, segunda columna
+LCD_putrs("Pi = ");
+LCD_Set_Cursor(0,8); // Primer renglón, octava columna
+LCD_putrs(buff);
+        
+sprintf(buff,"%.4f",E); //.Xf -> X: cifras significativas
+LCD_Set_Cursor(1,3); // Segundo renglón, tercera columna
+LCD_putrs("e = ");
+LCD_Set_Cursor(1,8); // Segundo renglón, octava columna
+LCD_putrs(buff);    
+```
+El circuito utilizado y los resultados de la simulación son los siguientes:
+<p align="center">
+<img src="https://1.bp.blogspot.com/-Cuk_GKPoYik/X9f0lliNtOI/AAAAAAAACcs/ezGq3rlHjXsOtpNfJjKQOlvpzIGl7-OQwCLcBGAsYHQ/s0/LCD_PIC24_Library.png" alt="alt text" width="750">
+</p>
